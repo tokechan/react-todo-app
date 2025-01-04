@@ -1,15 +1,39 @@
 # React TODO App
  
 環境を構築する
+今回はViteを使用してReactの環境を構築する
 
 ```
-npx create-react-app my-app
-cd my-app
-npm start
+npm create vite@latest
+``` 
+
+ネームドエクスポートを使用
+
 ```
+export const Todo = () => {
+  return <div>Todo</div>
+};
+```     
+合わせて、src/main.tsxを作成する
 
-ファイル名を変更する
-App.tsxをTodo.tsxに変更する
+```
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Todo } from "./Todo";
 
-それに伴い、関連するファイルの中身をTodoに変更する
+const rootElement = document.getElementById("root")!;
+const root = ReactDOM.createRoot(rootElement);
 
+root.render(
+  <React.StrictMode>
+    <Todo />
+  </React.StrictMode>
+);
+``` 
+useEffectを使用して、Todoを表示する
+
+```
+useEffect(() => {
+  console.log("Todo");
+}, []);
+```
